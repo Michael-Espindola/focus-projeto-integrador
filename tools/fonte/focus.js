@@ -14,8 +14,9 @@
     usuarios: 'telaUsuariosCadastrados' + SUFIXO + '.html'
   };
 
-  // Se a tela vier do próprio servidor (porta 8000) usa a mesma origem; senão o endereço padrão.
-  var API = (location.protocol.indexOf('http') === 0 && location.port === '8000')
+  // Se a tela vier de um servidor HTTP/HTTPS (local ou Render), usa a mesma origem;
+  // se for aberta diretamente pelo disco (file://), aponta para o servidor local.
+  var API = (location.protocol === 'http:' || location.protocol === 'https:')
     ? location.origin : 'http://127.0.0.1:8000';
 
   var CHAVE_SESSAO = 'focus_sessao';
